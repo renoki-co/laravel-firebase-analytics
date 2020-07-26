@@ -9,8 +9,6 @@ Laravel Firebase Analytics
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/d/monthly)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
 [![License](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/license)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
 
-**Note:** Replace  ```Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
-
 Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.
 
 ## 🤝 Supporting
