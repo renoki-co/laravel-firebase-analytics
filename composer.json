@@ -1,27 +1,27 @@
 {
-    "name": "renoki-co/:package_name",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "name": "renoki-co/laravel-firebase-analytics",
+    "description": "Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.",
+    "keywords": ["laravel", "php", "google", "firebase", "analytics", "blade", "directives"],
     "license": "MIT",
-    "homepage": "https://github.com/renoki-co/:package_name",
+    "homepage": "https://github.com/renoki-co/laravel-firebase-analytics",
     "authors": [
         {
-            "name": ":author_name",
-            "homepage": ":author_link",
+            "name": "Alex Renoki",
+            "homepage": "https://github.com/rennokki",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=7.2"
+        "laravel/framework": "^6.2|^7.0"
     },
     "autoload": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\": "src/"
+            "RenokiCo\\FirebaseAnalytics\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\Test\\": "tests"
+            "RenokiCo\\FirebaseAnalytics\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -38,7 +38,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RenokiCo\\:package_namespace\\:package_service_provider"
+                "RenokiCo\\FirebaseAnalytics\\FirebaseAnalyticsServiceProvider"
             ]
         }
     }

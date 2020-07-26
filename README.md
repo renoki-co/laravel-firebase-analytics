@@ -1,17 +1,17 @@
-Package Name Here
-===================================
+Laravel Firebase Analytics
+==========================
 
-![CI](https://github.com/renoki-co/:package_name/workflows/CI/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/renoki-co/:package_name/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/:package_name/branch/master)
-[![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
-[![Latest Stable Version](https://poser.pugx.org/renoki-co/:package_name/v/stable)](https://packagist.org/packages/renoki-co/:package_name)
-[![Total Downloads](https://poser.pugx.org/renoki-co/:package_name/downloads)](https://packagist.org/packages/renoki-co/:package_name)
-[![Monthly Downloads](https://poser.pugx.org/renoki-co/:package_name/d/monthly)](https://packagist.org/packages/renoki-co/:package_name)
-[![License](https://poser.pugx.org/renoki-co/:package_name/license)](https://packagist.org/packages/renoki-co/:package_name)
+![CI](https://github.com/renoki-co/laravel-firebase-analytics/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/renoki-co/laravel-firebase-analytics/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-firebase-analytics/branch/master)
+[![StyleCI](https://github.styleci.io/repos/282577033/shield?branch=master)](https://github.styleci.io/repos/282577033)
+[![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/v/stable)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
+[![Total Downloads](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/downloads)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
+[![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/d/monthly)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
+[![License](https://poser.pugx.org/renoki-co/laravel-firebase-analytics/license)](https://packagist.org/packages/renoki-co/laravel-firebase-analytics)
 
-**Note:** Replace  ```:package_name``` ```:package_description``` ```:package_namespace``` ```:package_service_provider``` ```:author_name``` ```:author_link``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
+**Note:** Replace  ```Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE](LICENSE) and [composer.json](composer.json) files, then delete this line.
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.
 
 ## 🤝 Supporting
 
@@ -24,26 +24,79 @@ If you are using your application in your day-to-day job, on presentation demos,
 You can install the package via composer:
 
 ```bash
-composer require renoki-co/:package_name
-```
-
-Publish the config:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="config"
-```
-
-Publish the migrations:
-
-```bash
-$ php artisan vendor:publish --provider="RenokiCo\:package_namespace\:package_service_provider" --tag="migrations"
+composer require renoki-co/laravel-firebase-analytics
 ```
 
 ## 🙌 Usage
 
+Initialize in your `<body>` tag using the `@initializeFirebaseAnalytics` directive, passing the version of Firebase JS scripts and the Firebase configuration parameters:
+
 ```php
-$ //
+<body>
+    @initializeFirebaseAnalytics([
+        'version' => '7.15.5',
+        'config' => [
+            'apiKey' => 'some-key',
+            'authDomain' => 'firebaseapp',
+            ...
+        ],
+    ])
+
+    ...
+</body>
 ```
+
+Afterwards, you can trigger events as [stated in Firebase Analytics docs](https://firebase.google.com/docs/analytics/events):
+
+```php
+<body>
+    @initializeFirebaseAnalytics([
+        'version' => '7.15.5',
+        'config' => [
+            'apiKey' => 'some-key',
+            'authDomain' => 'firebaseapp',
+            ...
+        ],
+    ])
+
+    @if ($loginSuccessful)
+        @firebaseAnalyticsEvent([
+            'name' => 'login',
+            'parameters' => [
+                'method' => 'email',
+            ],
+        ])
+    @endif
+</body>
+```
+
+Or for logged in users or sessions, you can set default user properties:
+
+```php
+<body>
+    @initializeFirebaseAnalytics([
+        'version' => '7.15.5',
+        'config' => [
+            'apiKey' => 'some-key',
+            'authDomain' => 'firebaseapp',
+            ...
+        ],
+    ])
+
+    @auth
+        @firebaseAnalyticsUserProperties([
+            'name' => auth()->user()->name,
+            'age' => auth()->user()->age,
+        ])
+    @endauth
+</body>
+```
+
+More details about the usage can be found here:
+
+- https://firebase.google.com/docs/analytics/get-started
+- https://firebase.google.com/docs/analytics/events
+- https://firebase.google.com/docs/analytics/user-properties
 
 ## 🐛 Testing
 
