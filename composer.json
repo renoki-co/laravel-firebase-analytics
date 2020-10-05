@@ -2,7 +2,7 @@
     "name": "renoki-co/laravel-firebase-analytics",
     "description": "Laravel Firebase Analytics adds blade directives to initialize, log events and set user properties for Firebase Analytics.",
     "keywords": ["laravel", "php", "google", "firebase", "analytics", "blade", "directives"],
-    "license": "MIT",
+    "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/laravel-firebase-analytics",
     "authors": [
         {
